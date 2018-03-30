@@ -44,7 +44,7 @@ public class Utility {
      * @param resopnse
      * @return
      */
-    public static boolean handleResponseCity(String resopnse){
+    public static boolean handleResponseCity(String resopnse,int provinceId){
         if(!TextUtils.isEmpty(resopnse)){
             try{
                 JSONArray allCity = new JSONArray(resopnse);
@@ -53,6 +53,7 @@ public class Utility {
                     City city = new City();
                     city.setCityName(cityObject.getString("name"));
                     city.setCityCode(cityObject.getInt("id"));
+                    city.setProvinceId(provinceId);
                     city.save();
                 }
                 return true;
@@ -67,7 +68,7 @@ public class Utility {
      * @param resopnse
      * @return
      */
-    public static boolean handleResponseCounty(String resopnse){
+    public static boolean handleResponseCounty(String resopnse,int cityId){
         if(!TextUtils.isEmpty(resopnse)){
             try{
                 JSONArray allCounty = new JSONArray(resopnse);
@@ -76,6 +77,7 @@ public class Utility {
                     County county = new County();
                     county.setCountyName(countyObject.getString("name"));
                     county.setCountyCode(countyObject.getInt("id"));
+                    county.setCityId(cityId);
                     county.save();
                 }
                 return true;
