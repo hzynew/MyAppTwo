@@ -95,4 +95,16 @@ public class ChooesAreaFragment extends Fragment {
         });
 
     }
+
+    private void queryCountys() {
+
+    }
+
+    private void queryProvinces() {
+
+    }
+
+    private void queryCitys() {
+
+    }
 }
