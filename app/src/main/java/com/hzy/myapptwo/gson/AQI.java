@@ -8,7 +8,7 @@ public class AQI {
     public AQICity aqIcity;
 
     public class AQICity {
-        String aqi;
-        String pm25;
+        public String aqi;
+        public String pm25;
     }
 }

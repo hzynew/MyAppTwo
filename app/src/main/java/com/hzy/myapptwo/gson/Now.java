@@ -8,11 +8,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class Now {
     @SerializedName("tmp")
-    String temperature;
+    public String temperature;
     @SerializedName("cond")
-    More more;
+    public More more;
 
-    private class More {
+    public class More {
         @SerializedName("txt")
         public String into;
     }

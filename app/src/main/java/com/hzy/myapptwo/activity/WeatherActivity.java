@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.hzy.myapptwo.R;
+import com.hzy.myapptwo.gson.Forecast;
 import com.hzy.myapptwo.gson.Weather;
 import com.hzy.myapptwo.utils.HttpUtil;
 import com.hzy.myapptwo.utils.Utility;
@@ -114,6 +116,40 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     private void showWeather(Weather weather) {
+        String cityName = weather.basic.cityName;
+        String updateTime = weather.basic.update.updateTime.split(" ")[1];
+        String degree = weather.now.temperature + "℃";
+        String weatherInfo = weather.now.more.into;
 
+        titleCity.setText(cityName);
+        titleUpdateTime.setText(updateTime);
+        degreeText.setText(degree);
+        weatherInfoText.setText(weatherInfo);
+
+        forecastLayou.removeAllViews();
+        for(Forecast forecast:weather.forecastList){
+            View view = LayoutInflater.from(this).inflate(R.layout.forecast_item,forecastLayou,false);
+            TextView dateText = view.findViewById(R.id.date_text);
+            TextView infoText = view.findViewById(R.id.info_text);
+            TextView maxText = view.findViewById(R.id.max_text);
+            TextView minText = view.findViewById(R.id.min_text);
+
+            dateText.setText(forecast.date);
+            infoText.setText(forecast.more.into);
+            maxText.setText(forecast.temperature.max);
+            minText.setText(forecast.temperature.min);
+            forecastLayou.addView(view);
+        }
+        if(weather.aqi!=null){
+            aqiText.setText(weather.aqi.aqIcity.aqi);
+            pm25Text.setText(weather.aqi.aqIcity.pm25);
+        }
+        String comfort = "舒适度："+weather.suggestion.comfort.info;
+        String carWash = "洗车指数："+weather.suggestion.carwash.info;
+        String sport = "运动指数："+weather.suggestion.sport.info;
+        comfortText.setText(comfort);
+        carWashText.setText(carWash);
+        sportText.setText(sport);
+        weatherLayout.setVisibility(View.VISIBLE);
     }
 }

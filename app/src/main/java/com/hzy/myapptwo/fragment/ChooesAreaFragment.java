@@ -2,6 +2,7 @@ package com.hzy.myapptwo.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hzy.myapptwo.R;
+import com.hzy.myapptwo.activity.WeatherActivity;
 import com.hzy.myapptwo.db.City;
 import com.hzy.myapptwo.db.County;
 import com.hzy.myapptwo.db.Province;
@@ -98,6 +100,12 @@ public class ChooesAreaFragment extends Fragment {
                 } else if (currentLevel == LEVEL_CITY) {
                     selCity = cityList.get(i);
                     queryCountys();
+                } else if(currentLevel == LEVEL_COUNTY){
+                    String weatherId = countyList.get(i).getweatherId();
+                    Intent intent = new Intent(mContext, WeatherActivity.class);
+                    intent.putExtra("weather_id",weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
