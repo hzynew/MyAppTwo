@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">天气APP</string>
+    <string name="yubao">预报</string>
 </resources>
