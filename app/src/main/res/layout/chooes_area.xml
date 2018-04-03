@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#e1dddd"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:layout_height="?attr/actionBarSize">
 
         <TextView
             android:id="@+id/title_tv"
@@ -15,16 +16,18 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_centerInParent="true"
-            android:textColor="#fff"
+            android:textColor="#f9c711"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/back_btn"
-            android:layout_width="25dp"
+            android:layout_width="50dp"
             android:layout_height="25dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:text="@string/back_title"
+            android:background="@android:color/transparent"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp" />
     </RelativeLayout>
